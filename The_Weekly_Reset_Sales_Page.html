@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple printable planning kit to help you reset your week, choose priorities, and focus on what matters next.">
+  <title>The Weekly Reset Kit | Less chaos, more clarity</title>
+  <style>
+    :root {
+      --cream: #f7f5ef;
+      --paper: #fffefa;
+      --sage: #788b73;
+      --sage-dark: #52644f;
+      --ink: #292d29;
+      --muted: #656b63;
+      --line: #dfe3d8;
+      --accent: #e7ecdf;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--cream); color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header { padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .08em; font-size: .85rem; text-transform: uppercase; }
+    .nav a { text-decoration: none; font-size: .92rem; }
+    .hero { padding: 78px 0 64px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .eyebrow { color: var(--sage-dark); font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.02; letter-spacing: -.055em; margin: 16px 0 22px; max-width: 720px; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.12; letter-spacing: -.035em; margin: 0 0 18px; }
+    h3 { margin: 0 0 8px; line-height: 1.25; }
+    p { margin: 0 0 16px; }
+    .lead { color: var(--muted); font-size: 1.15rem; max-width: 600px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; align-items: center; }
+    .button { display: inline-block; text-decoration: none; padding: 14px 22px; border-radius: 999px; font-weight: 750; border: 1px solid var(--sage-dark); }
+    .button.primary { background: var(--sage-dark); color: white; }
+    .button.secondary { background: transparent; color: var(--sage-dark); }
+    .small-note { color: var(--muted); font-size: .86rem; margin-top: 14px; }
+    .preview { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 26px; box-shadow: 0 20px 50px rgba(41,45,41,.07); transform: rotate(1deg); }
+    .preview-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 18px; }
+    .preview-top strong { font-size: 1.05rem; letter-spacing: .04em; }
+    .tag { background: var(--accent); color: var(--sage-dark); border-radius: 999px; padding: 5px 10px; font-size: .72rem; font-weight: 800; }
+    .line { border-bottom: 1px solid var(--line); min-height: 34px; }
+    .preview-label { text-transform: uppercase; font-size: .69rem; letter-spacing: .12em; color: var(--sage-dark); font-weight: 800; margin: 15px 0 3px; }
+    .preview-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    section { padding: 68px 0; }
+    .section-head { max-width: 680px; margin-bottom: 30px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+    .number { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--accent); color: var(--sage-dark); font-weight: 800; margin-bottom: 18px; }
+    .muted { color: var(--muted); }
+    .soft { background: #eef0e8; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: start; }
+    ul { padding-left: 20px; margin: 18px 0; }
+    li { margin: 8px 0; }
+    .price-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 30px; max-width: 480px; }
+    .price { font-size: 3rem; font-weight: 850; letter-spacing: -.05em; line-height: 1.1; margin: 10px 0; }
+    .pill { display: inline-block; background: var(--accent); color: var(--sage-dark); padding: 6px 11px; border-radius: 999px; font-size: .78rem; font-weight: 800; }
+    .faq { border-top: 1px solid var(--line); padding: 20px 0; }
+    .faq:last-child { border-bottom: 1px solid var(--line); }
+    footer { padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .hero { padding-top: 48px; }
+      .hero-grid, .two-col { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .preview { transform: none; }
+      section { padding: 48px 0; }
+      .nav { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="The Weekly Reset home">The Weekly Reset</a>
+      <a href="#whats-inside">What's inside</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">A calmer way to plan</div>
+          <h1>Less chaos.<br>More clarity.</h1>
+          <p class="lead">Plan your week in 15 minutes and know what matters next—with simple, printable pages designed to get your thoughts out of your head and onto paper.</p>
+          <div class="actions">
+            <!-- Replace YOUR_GUMROAD_URL with your live product checkout URL before publishing. -->
+            <a class="button primary" href="https://YOUR_GUMROAD_URL" target="_blank" rel="noopener">Get the starter kit</a>
+            <a class="button secondary" href="#whats-inside">Explore the templates</a>
+          </div>
+          <p class="small-note">Instant digital download • Printable PDF files • A4 and US Letter sizes</p>
+        </div>
+        <div class="preview" aria-label="Illustrative preview of a weekly planner">
+          <div class="preview-top">
+            <strong>MY WEEKLY RESET</strong><span class="tag">START FRESH</span>
+          </div>
+          <div class="preview-label">This week's main focus</div>
+          <div class="line"></div>
+          <div class="preview-label">Top 3 priorities</div>
+          <div class="line">1.</div><div class="line">2.</div><div class="line">3.</div>
+          <div class="preview-cols">
+            <div><div class="preview-label">Must do</div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+            <div><div class="preview-label">Could do</div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+          </div>
+          <div class="preview-label">One thing to make time for</div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap two-col">
+        <div>
+          <div class="eyebrow">Made for real life</div>
+          <h2>Your brain wasn't meant to be your to-do list.</h2>
+        </div>
+        <div>
+          <p class="muted">When tasks are scattered across notes, apps, and mental reminders, it can be hard to see what deserves your attention. A short planning ritual helps you pause, choose priorities, and move forward with a clearer plan.</p>
+          <p><strong>No complicated system. No need to plan every minute.</strong> Just a few practical pages you can reuse whenever you need a reset.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="whats-inside">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Inside the starter kit</div>
+          <h2>Three simple templates. One clearer plan.</h2>
+          <p class="muted">This starter edition includes the three templates listed below, each supplied as a printable PDF in A4 and US Letter sizes.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="number">01</div>
+            <h3>Weekly Planner</h3>
+            <p class="muted">See your week at a glance, map out commitments, and choose the priorities that deserve your attention.</p>
+          </article>
+          <article class="card">
+            <div class="number">02</div>
+            <h3>Daily Focus Sheet</h3>
+            <p class="muted">Turn a busy day into a manageable plan with space for key tasks, focus, and notes.</p>
+          </article>
+          <article class="card">
+            <div class="number">03</div>
+            <h3>Priority Matrix</h3>
+            <p class="muted">Sort tasks by urgency and importance so you can decide what to do, schedule, delegate, or reconsider.</p>
+          </article>
+        </div>
+        <p class="small-note">The Monthly Habit Tracker, Weekly Reset Checklist, and Quick-Start Guide are not included in this starter edition.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap two-col">
+        <div>
+          <div class="eyebrow">A small ritual that adds up</div>
+          <h2>Make your next step obvious.</h2>
+          <p class="muted">Use the pages in the order that works for you. Start with a weekly overview, pick today's focus, then use the priority matrix when everything feels urgent.</p>
+          <ul>
+            <li>Print only the pages you need.</li>
+            <li>Reuse them each week or day.</li>
+            <li>Keep the process flexible and realistic.</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <span class="pill">STARTER EDITION</span>
+          <h3 style="margin-top:18px">The Weekly Reset Kit</h3>
+          <div class="price">$4.90</div>
+          <p class="muted">Suggested launch price. Set the actual price in your checkout platform before publishing.</p>
+          <ul>
+            <li>3 printable planning templates</li>
+            <li>A4 and US Letter PDF versions</li>
+            <li>Reusable, undated layouts</li>
+          </ul>
+          <!-- Replace YOUR_GUMROAD_URL with your live product checkout URL before publishing. -->
+          <a class="button primary" style="width:100%;text-align:center" href="https://YOUR_GUMROAD_URL" target="_blank" rel="noopener">Get instant access</a>
+          <p class="small-note">Digital product only. No physical item will be shipped.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Frequently asked questions</div>
+          <h2>Good to know</h2>
+        </div>
+        <div class="faq">
+          <h3>How will I receive the files?</h3>
+          <p class="muted">After checkout, your store should deliver the downloadable files automatically. Confirm that file delivery is configured in your store before launching.</p>
+        </div>
+        <div class="faq">
+          <h3>What paper sizes are included?</h3>
+          <p class="muted">The printable PDFs are supplied in both A4 and US Letter sizes.</p>
+        </div>
+        <div class="faq">
+          <h3>Can I edit the templates?</h3>
+          <p class="muted">The starter ZIP also contains editable Word source files. Their layout may vary slightly depending on your version of Word or other word processor.</p>
+        </div>
+        <div class="faq">
+          <h3>Is this a physical planner?</h3>
+          <p class="muted">No. This is a digital download; you print the pages yourself if you want paper copies.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap" style="text-align:center;max-width:760px">
+        <div class="eyebrow">Start with one clear step</div>
+        <h2>Give your week a reset.</h2>
+        <p class="lead" style="margin:0 auto">A simple planning page won't do everything for you—but it can help you decide what comes next.</p>
+        <div class="actions" style="justify-content:center">
+          <!-- Replace YOUR_GUMROAD_URL with your live product checkout URL before publishing. -->
+          <a class="button primary" href="https://YOUR_GUMROAD_URL" target="_blank" rel="noopener">Get the starter kit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year">2026</span> The Weekly Reset</span>
+      <span>Digital productivity tools for everyday life.</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
